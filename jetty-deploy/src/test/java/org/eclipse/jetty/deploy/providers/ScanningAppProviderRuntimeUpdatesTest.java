@@ -155,7 +155,7 @@ public class ScanningAppProviderRuntimeUpdatesTest
      * @throws Exception on test failure
      */
     @Test
-    @DisabledOnOs(WINDOWS)
+    //@DisabledOnOs(WINDOWS)
     // This test will not work on Windows as second war file would, not be written over the first one because of a file lock
     public void testAfterStartupThenUpdateContext() throws Exception
     {

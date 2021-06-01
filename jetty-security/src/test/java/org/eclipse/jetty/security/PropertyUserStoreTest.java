@@ -277,7 +277,7 @@ public class PropertyUserStoreTest
     }
 
     @Test
-    @DisabledOnOs({MAC, WINDOWS}) // File is locked on OS, cannot change.
+    //@DisabledOnOs({MAC, WINDOWS}) // File is locked on OS, cannot change.
     public void testPropertyUserStoreLoadRemoveUser() throws Exception
     {
         testdir.ensureEmpty();

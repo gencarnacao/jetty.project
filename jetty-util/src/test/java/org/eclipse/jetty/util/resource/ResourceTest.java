@@ -284,7 +284,7 @@ public class ResourceTest
     }
 
     @Test
-    @DisabledOnOs(OS.WINDOWS) // this uses forbidden characters on some Windows Environments
+    //@DisabledOnOs(OS.WINDOWS) // this uses forbidden characters on some Windows Environments
     public void testGlobPath() throws IOException
     {
         Path testDir = MavenTestingUtils.getTargetTestingPath("testGlobPath");

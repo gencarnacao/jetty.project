@@ -641,7 +641,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @MethodSource("fsResourceProvider")
-    @DisabledOnOs(WINDOWS)
+    //@DisabledOnOs(WINDOWS)
     public void testSymlink(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -683,7 +683,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @ValueSource(classes = PathResource.class) // FileResource does not support this
-    @DisabledOnOs(WINDOWS)
+    //@DisabledOnOs(WINDOWS)
     public void testNonExistantSymlink(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -937,7 +937,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @MethodSource("fsResourceProvider")
-    @DisabledOnOs(WINDOWS)
+    //@DisabledOnOs(WINDOWS)
     public void testSemicolon(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -964,7 +964,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @MethodSource("fsResourceProvider")
-    @DisabledOnOs(WINDOWS)
+    //@DisabledOnOs(WINDOWS)
     public void testSingleQuote(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -992,7 +992,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @MethodSource("fsResourceProvider")
-    @DisabledOnOs(WINDOWS)
+    //@DisabledOnOs(WINDOWS)
     public void testSingleBackTick(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -1020,7 +1020,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @MethodSource("fsResourceProvider")
-    @DisabledOnOs(WINDOWS)
+    //@DisabledOnOs(WINDOWS)
     public void testBrackets(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -1048,7 +1048,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @ValueSource(classes = PathResource.class) // FileResource does not support this
-    @DisabledOnOs(WINDOWS)
+    //@DisabledOnOs(WINDOWS)
     public void testBraces(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -1076,7 +1076,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @ValueSource(classes = PathResource.class) // FileResource does not support this
-    @DisabledOnOs(WINDOWS)
+    //@DisabledOnOs(WINDOWS)
     public void testCaret(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -1104,7 +1104,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @ValueSource(classes = PathResource.class) // FileResource does not support this
-    @DisabledOnOs(WINDOWS)
+    //@DisabledOnOs(WINDOWS)
     public void testPipe(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();

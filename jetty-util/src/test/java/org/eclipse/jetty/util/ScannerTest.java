@@ -288,7 +288,7 @@ public class ScannerTest
     }
 
     @Test
-    @DisabledOnOs(WINDOWS) // TODO: needs review
+    //@DisabledOnOs(WINDOWS) // TODO: needs review
     public void testAddedChangeRemove() throws Exception
     {
         touch("a0");
@@ -398,7 +398,7 @@ public class ScannerTest
     }
 
     @Test
-    @DisabledOnOs(WINDOWS) // TODO: needs review
+    //@DisabledOnOs(WINDOWS) // TODO: needs review
     public void testSizeChange() throws Exception
     {
         touch("tsc0");

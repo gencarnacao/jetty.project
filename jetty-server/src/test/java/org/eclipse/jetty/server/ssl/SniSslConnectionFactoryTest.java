@@ -236,7 +236,7 @@ public class SniSslConnectionFactoryTest
     }
 
     @Test
-    @DisabledOnOs(OS.WINDOWS)
+    //@DisabledOnOs(OS.WINDOWS)
     public void testWrongSNIRejectedConnection() throws Exception
     {
         start(ssl ->
@@ -276,7 +276,7 @@ public class SniSslConnectionFactoryTest
     }
 
     @Test
-    @DisabledOnOs(OS.WINDOWS)
+    //@DisabledOnOs(OS.WINDOWS)
     public void testWrongSNIRejectedFunction() throws Exception
     {
         start((ssl, customizer) ->
@@ -303,7 +303,7 @@ public class SniSslConnectionFactoryTest
     }
 
     @Test
-    @DisabledOnOs(OS.WINDOWS)
+    //@DisabledOnOs(OS.WINDOWS)
     public void testWrongSNIRejectedConnectionWithNonSNIKeystore() throws Exception
     {
         start(ssl ->

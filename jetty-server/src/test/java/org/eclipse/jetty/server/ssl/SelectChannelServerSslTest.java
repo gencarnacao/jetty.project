@@ -125,7 +125,7 @@ public class SelectChannelServerSslTest extends HttpServerTestBase
     }
 
     @Override
-    @DisabledOnOs(WINDOWS) // Don't run on Windows (buggy JVM)
+    //@DisabledOnOs(WINDOWS) // Don't run on Windows (buggy JVM)
     public void testFullMethod() throws Exception
     {
         try
@@ -148,7 +148,7 @@ public class SelectChannelServerSslTest extends HttpServerTestBase
     }
 
     @Override
-    @DisabledOnOs(WINDOWS) // Don't run on Windows (buggy JVM)
+    //@DisabledOnOs(WINDOWS) // Don't run on Windows (buggy JVM)
     public void testFullURI() throws Exception
     {
         try

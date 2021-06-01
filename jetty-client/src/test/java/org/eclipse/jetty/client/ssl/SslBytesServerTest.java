@@ -1024,7 +1024,7 @@ public class SslBytesServerTest extends SslBytesTest
     }
 
     @Test
-    @DisabledOnOs(WINDOWS) // Don't run on Windows (buggy JVM)
+    //@DisabledOnOs(WINDOWS) // Don't run on Windows (buggy JVM)
     public void testRequestWithBigContentWriteBlockedThenReset() throws Exception
     {
         final SSLSocket client = newClient();
@@ -1079,7 +1079,7 @@ public class SslBytesServerTest extends SslBytesTest
     }
 
     @Test
-    @DisabledOnOs(WINDOWS) // Don't run on Windows (buggy JVM)
+    //@DisabledOnOs(WINDOWS) // Don't run on Windows (buggy JVM)
     public void testRequestWithBigContentReadBlockedThenReset() throws Exception
     {
         final SSLSocket client = newClient();
