@@ -641,7 +641,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @MethodSource("fsResourceProvider")
-    //@DisabledOnOs(WINDOWS)
+    @DisabledOnOs(value = WINDOWS, disabledReason = "Windows do not support Symlink")
     public void testSymlink(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -683,7 +683,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @ValueSource(classes = PathResource.class) // FileResource does not support this
-    //@DisabledOnOs(WINDOWS)
+    @DisabledOnOs(value = WINDOWS, disabledReason = "Windows do not support Symlink")
     public void testNonExistantSymlink(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -937,7 +937,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @MethodSource("fsResourceProvider")
-    //@DisabledOnOs(WINDOWS)
+    @DisabledOnOs(value = WINDOWS, disabledReason = "Windows do not support semicolon in Path")
     public void testSemicolon(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -964,7 +964,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @MethodSource("fsResourceProvider")
-    //@DisabledOnOs(WINDOWS)
+    @DisabledOnOs(value = WINDOWS, disabledReason = "Windows do not support Quote in Path")
     public void testSingleQuote(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -992,7 +992,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @MethodSource("fsResourceProvider")
-    //@DisabledOnOs(WINDOWS)
+    @DisabledOnOs(value = WINDOWS, disabledReason = "Windows do not support Back Tick as part of Path")
     public void testSingleBackTick(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
@@ -1104,7 +1104,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @ValueSource(classes = PathResource.class) // FileResource does not support this
-    //@DisabledOnOs(WINDOWS)
+    @DisabledOnOs(value = WINDOWS,disabledReason = "| not supported by Windows as Path part")
     public void testPipe(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
