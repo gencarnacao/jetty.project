@@ -1104,7 +1104,7 @@ public class FileSystemResourceTest
 
     @ParameterizedTest
     @ValueSource(classes = PathResource.class) // FileResource does not support this
-    @DisabledOnOs(value = WINDOWS,disabledReason = "| not supported by Windows as Path part")
+    @DisabledOnOs(value = WINDOWS, disabledReason = "| not supported by Windows as Path part")
     public void testPipe(Class<PathResource> resourceClass) throws Exception
     {
         Path dir = workDir.getEmptyPathDir();
