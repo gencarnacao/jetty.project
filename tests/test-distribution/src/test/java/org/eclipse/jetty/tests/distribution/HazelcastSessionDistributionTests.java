@@ -20,9 +20,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +28,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jetty.client.api.ContentResponse;
 import org.eclipse.jetty.http.HttpStatus;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -46,7 +42,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class HazelcastSessionDistributionTests extends AbstractDistributionTest
+public class HazelcastSessionDistributionTests extends AbstractJettyHomeTest
 {
     private static final Logger HAZELCAST_LOG = LoggerFactory.getLogger("org.eclipse.jetty.tests.distribution.HazelcastLogs");
 
@@ -81,7 +77,7 @@ public class HazelcastSessionDistributionTests extends AbstractDistributionTest
                                           tokenValues);
 
             String jettyVersion = System.getProperty("jettyVersion");
-            DistributionTester distribution = DistributionTester.Builder.newInstance()
+            JettyHomeTester distribution = JettyHomeTester.Builder.newInstance()
                 .jettyVersion(jettyVersion)
                 .mavenLocalRepository(System.getProperty("mavenRepoPath"))
                 .build();
@@ -91,7 +87,7 @@ public class HazelcastSessionDistributionTests extends AbstractDistributionTest
                 "--approve-all-licenses",
                 "--add-to-start=resources,server,http,webapp,deploy,jmx,servlet,servlets,session-store-hazelcast-remote"
             };
-            try (DistributionTester.Run run1 = distribution.start(args1))
+            try (JettyHomeTester.Run run1 = distribution.start(args1))
             {
                 assertTrue(run1.awaitFor(5, TimeUnit.SECONDS));
                 assertEquals(0, run1.getExitValue());
@@ -105,7 +101,7 @@ public class HazelcastSessionDistributionTests extends AbstractDistributionTest
                     "jetty.session.hazelcast.configurationLocation=" + hazelcastJettyPath.toAbsolutePath(),
                     "jetty.session.hazelcast.onlyClient=true"
                 };
-                try (DistributionTester.Run run2 = distribution.start(argsStart))
+                try (JettyHomeTester.Run run2 = distribution.start(argsStart))
                 {
                     assertTrue(run2.awaitConsoleLogsFor("Started @", 10, TimeUnit.SECONDS));
 
@@ -119,7 +115,7 @@ public class HazelcastSessionDistributionTests extends AbstractDistributionTest
                     assertThat(response.getContentAsString(), containsString("SESSION READ CHOCOLATE THE BEST:FRENCH"));
                 }
 
-                try (DistributionTester.Run run2 = distribution.start(argsStart))
+                try (JettyHomeTester.Run run2 = distribution.start(argsStart))
                 {
                     assertTrue(run2.awaitConsoleLogsFor("Started @", 10, TimeUnit.SECONDS));
 
@@ -171,7 +167,7 @@ public class HazelcastSessionDistributionTests extends AbstractDistributionTest
                                          tokenValues);
 
             String jettyVersion = System.getProperty("jettyVersion");
-            DistributionTester distribution = DistributionTester.Builder.newInstance()
+            JettyHomeTester distribution = JettyHomeTester.Builder.newInstance()
                 .jettyVersion(jettyVersion)
                 .mavenLocalRepository(System.getProperty("mavenRepoPath"))
                 .build();
@@ -181,7 +177,7 @@ public class HazelcastSessionDistributionTests extends AbstractDistributionTest
                 "--approve-all-licenses",
                 "--add-to-start=resources,server,http,webapp,deploy,jmx,servlet,servlets,session-store-hazelcast-remote"
             };
-            try (DistributionTester.Run run1 = distribution.start(args1))
+            try (JettyHomeTester.Run run1 = distribution.start(args1))
             {
                 assertTrue(run1.awaitFor(10, TimeUnit.SECONDS));
                 assertEquals(0, run1.getExitValue());
@@ -196,7 +192,7 @@ public class HazelcastSessionDistributionTests extends AbstractDistributionTest
                     "jetty.session.hazelcast.configurationLocation=" + hazelcastJettyPath.toAbsolutePath()
                 );
 
-                try (DistributionTester.Run run2 = distribution.start(argsStart))
+                try (JettyHomeTester.Run run2 = distribution.start(argsStart))
                 {
                     assertTrue(run2.awaitConsoleLogsFor("Started @", 60, TimeUnit.SECONDS));
 
@@ -212,7 +208,7 @@ public class HazelcastSessionDistributionTests extends AbstractDistributionTest
 
                 LOGGER.info("restarting Jetty");
 
-                try (DistributionTester.Run run2 = distribution.start(argsStart))
+                try (JettyHomeTester.Run run2 = distribution.start(argsStart))
                 {
                     assertTrue(run2.awaitConsoleLogsFor("Started @", 15, TimeUnit.SECONDS));
 
